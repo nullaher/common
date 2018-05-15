@@ -1,0 +1,22 @@
+app.name=common-http
+app.description=${app.name} is a Spring Boot application
+
+server.port=9000
+#server.isdebug=true
+
+logging.path=/log/${app.name}
+
+#logging.level.root=debug
+
+# Thrift pool config
+thrift.pool.maxActive=20
+thrift.pool.maxWait=1000
+thrift.pool.maxIdle=100
+thrift.connectTimeout=10000
+#pro
+#thrift.trade.host=123.125.127.117:32100
+#wy
+#thrift.trade.host=192.168.10.38:32100
+#thrift.trade.host=192.168.3.54:32100
+
+heypay.domain=http://192.168.3.73:8082/h5/

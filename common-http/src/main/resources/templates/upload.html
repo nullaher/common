@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Hello World!</title>
+    </head>
+    <body>
+       <form method="post" enctype="multipart/form-data" action="/img/upload"> 
+           <p>平台：<input  name="platfmId" value="group1" /></p>
+           <p>是否生产缩略图：<input  name="genThumbImg" value="1" /></p>
+           <p>文件1：<input type="file" name="file" /></p>
+           <p>文件2：<input type="file" name="file" /></p>
+           <p>文件3：<input type="file" name="file" /></p>
+           <p><input type="submit" value="上传" /></p>   
+       </form>
+       <img alt="" src="http://localhost:8080/file/img/group11490858607671" />
+    </body>
+</html>

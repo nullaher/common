@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+    
+    <property name="log_base" value="/var/log/base" />
+	<property name="log_moduleName" value="common-http" />
+	<property name="log_maxHistory" value="30" />
+	<property name="log_maxFileSize" value="512MB" />
+
+	<appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_base}/${log_moduleName}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_base}/archive/${log_moduleName}_%d{yyyyMMdd}.file%i.log.zip</fileNamePattern>
+			<maxHistory>${log_maxHistory}</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>${log_maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n</pattern>
+		</encoder>
+	</appender>
+    
+     
+    <logger name="cn.nullah.common.http.file" level="INFO" /> 
+    <!-- 关闭报文日志 -->
+    <logger name="com.github.tobato.fastdfs.proto" level="WARN" /> 
+    <logger name="org.springframework" level="WARN" />
+ 
+    <root level="debug">
+        <appender-ref ref="console" />
+        <appender-ref ref="ROLLING-FILE" />
+    </root>
+</configuration>

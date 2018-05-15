@@ -1,0 +1,61 @@
+
+
+# ===================================================================
+# spring 数据源配置
+# ===================================================================
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@10.10.5.21:1521:pay
+    username: base
+    password: base
+    
+    driverClassName: oracle.jdbc.driver.OracleDriver
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl.auto: update
+    databasePlatform: org.hibernate.dialect.OracleDialect
+
+#spring.jpa.properties.hibernate.hbm2ddl.auto=update
+#spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+#spring.jpa.database=MySQL
+#spring.jpa.show-sql=true  
+#spring.jpa.generate-ddl=true  
+#spring.jpa.hibernate.ddl-auto=update  
+#spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect  
+#spring.jpa.hibernate.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy  
+#spring.jpa.database=org.hibernate.dialect.MySQL5InnoDBDialect 
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MYSQL5Dialect
+
+
+# ===================================================================
+# 分布式文件系统FDFS配置
+# ===================================================================
+fdfs:
+  soTimeout: 1501
+  connectTimeout: 601 
+  thumbImage:             #缩略图生成参数
+    width: 150
+    height: 150
+  trackerList:            #TrackerList参数,支持多个
+    - 127.0.0.1:22122
+  #  - 192.168.3.71:22122
+ #   - 192.168.3.72:22122 
+  pool:
+    #从池中借出的对象的最大数目
+    maxTotal: 2
+    #获取连接时的最大等待毫秒数100
+    maxWaitMillis: 102
+    
+    
+
+file:
+  downPort: 5555
+  
+multipart:
+  maxFileSize: 10MB  #(这里是限制的文件大小)
+  maxRequestSize: 10MB #(这里是限制的文件大小)
+  
+logging:
+  path: /var/log/base/common-http
+  
